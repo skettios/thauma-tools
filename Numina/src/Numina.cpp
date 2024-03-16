@@ -8,8 +8,11 @@ namespace tt
 {
 static GLFWwindow *g_Window = nullptr;
 
-int Numina_Initialize()
+int Numina_Initialize(App *app)
 {
+  WindowDescriptor window_descriptor = app->GetResource<WindowDescriptor>();
+  ClearColor clear_color = app->GetResource<ClearColor>();
+
   if (!glfwInit())
   {
     return -1;
@@ -18,7 +21,8 @@ int Numina_Initialize()
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
   glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-  g_Window = glfwCreateWindow(1920, 1080, "Thaumaturge", NULL, NULL);
+  g_Window = glfwCreateWindow(window_descriptor.m_Width, window_descriptor.m_Height, window_descriptor.m_Title.c_str(),
+                              NULL, NULL);
   if (!g_Window)
     return -2;
 
@@ -27,7 +31,7 @@ int Numina_Initialize()
 
   glfwShowWindow(g_Window);
 
-  glClearColor(0.f, 1.f, 1.f, 1.f);
+  glClearColor(clear_color.m_Red, clear_color.m_Green, clear_color.m_Blue, 1.f);
 
   return 0;
 }

@@ -11,12 +11,11 @@ static int _Numina_Main(int argc, char **argv)
     return app_result;
 
   std::cout << "Numina" << std::endl;
+  assert(tt::Numina_GetApplication() != nullptr && "Application not set");
 
-  int32_t engine_result = tt::Numina_Initialize();
+  int32_t engine_result = tt::Numina_Initialize(tt::Numina_GetApplication());
   if (engine_result != 0)
     return engine_result;
-
-  assert(tt::Numina_GetApplication() != nullptr && "Application not set");
 
   tt::Numina_Run(tt::Numina_GetApplication());
 

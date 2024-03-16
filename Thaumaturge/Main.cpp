@@ -20,7 +20,9 @@ public:
 int main(int argc, char **argv)
 {
   std::cout << "Thaumaturge" << std::endl;
-  tt::App *app = new tt::Thaumaturge;
+  tt::App *app = new tt::Thaumaturge();
+  app->InsertResource(new tt::WindowDescriptor{"Thaumaturge"});
+  app->InsertResource(new tt::ClearColor{0.f, 1.f, 1.f});
 
   return 0;
 }
