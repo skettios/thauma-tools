@@ -1,0 +1,57 @@
+cmake_minimum_required(VERSION 3.28)
+project(Numina)
+
+add_library(Numina SHARED)
+target_sources(
+  Numina
+  PRIVATE
+    src/Numina.cpp
+    src/Numina_App.cpp
+)
+target_include_directories(
+  Numina
+  PUBLIC
+    include
+)
+target_link_libraries(
+  Numina
+  PRIVATE
+    glfw
+    glad
+)
+target_compile_definitions(
+  Numina
+  PRIVATE
+    TT_NUMINA_EXPORT_BUILD
+)
+if(WIN32)
+  target_compile_definitions(
+    Numina
+    PUBLIC
+      TT_PLATFORM_WIN32
+  )
+endif()
+
+add_library(Numain STATIC)
+target_sources(
+  Numain
+  PRIVATE
+    src/Numina_Main.cpp
+)
+target_link_libraries(
+  Numain
+  PRIVATE
+    Numina
+)
+target_compile_definitions(
+  Numain
+  PRIVATE
+    TT_NUMINA_EXPORT_BUILD
+)
+if(WIN32)
+  target_compile_definitions(
+    Numain
+    PUBLIC
+      TT_PLATFORM_WIN32
+  )
+endif()
