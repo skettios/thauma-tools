@@ -3,7 +3,6 @@ project(Thauma-Tools)
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
 
 include(FetchContent)
 FetchContent_Declare(
@@ -16,6 +15,7 @@ FetchCOntent_MakeAvailable(
 )
 
 add_subdirectory(external/glad)
+add_subdirectory(external/imgui)
 
 add_subdirectory(Numina)
 add_subdirectory(Thaumaturge)

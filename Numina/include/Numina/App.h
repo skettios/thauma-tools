@@ -3,6 +3,7 @@
 
 #include "Defines.h"
 #include "AppResources.h"
+#include "AppLayer.h"
 
 #include <unordered_map>
 #include <typeindex>
@@ -15,18 +16,23 @@ public:
   App();
   ~App();
 
-  virtual void OnUpdate() = 0;
-  virtual void OnRender() = 0;
+  void Update(float);
+  void ImGuiUpdate();
+  void Render();
 
   void InsertResource(AppResource *);
+  void PushLayer(AppLayer *);
 
   template <typename T> T &GetResource() const
   {
     return static_cast<T &>(*m_Resources.at(std::type_index(typeid(T))));
   }
 
+  AppLayer *PopLayer();
+
 private:
   std::unordered_map<std::type_index, AppResource *> m_Resources;
+  std::vector<AppLayer *> m_Layers;
 };
 } // namespace tt
 

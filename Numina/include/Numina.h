@@ -2,7 +2,6 @@
 #define NUMINA_H
 
 #include "Numina/Defines.h"
-#include "Numina/Main.h"
 
 #include "Numina/App.h"
 

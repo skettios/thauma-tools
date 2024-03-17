@@ -7,7 +7,7 @@ namespace tt
 {
 App *g_Application = nullptr;
 
-App *Numina_GetApplication()
+App NUMINA_API *Numina_GetApplication()
 {
   return g_Application;
 }
@@ -16,15 +16,33 @@ App::App()
 {
   assert(g_Application == nullptr && "Cannot have 2 applications running at the same time!");
 
-  g_Application = this;
-
   InsertResource(new WindowDescriptor);
   InsertResource(new ClearColor);
+
+  g_Application = this;
 }
 
 App::~App()
 {
   g_Application = nullptr;
+}
+
+void App::Update(float delta_time)
+{
+  for (auto layer : m_Layers)
+    layer->OnUpdate(delta_time);
+}
+
+void App::ImGuiUpdate()
+{
+  for (auto layer : m_Layers)
+    layer->OnImGui();
+}
+
+void App::Render()
+{
+  for (auto layer : m_Layers)
+    layer->OnRender();
 }
 
 void App::InsertResource(AppResource *resource)
@@ -39,5 +57,23 @@ void App::InsertResource(AppResource *resource)
   m_Resources.insert(std::pair<std::type_index, AppResource *>(std::type_index(typeid(*resource)), resource));
 }
 
-} // namespace tt
+void App::PushLayer(AppLayer *layer)
+{
+  m_Layers.push_back(layer);
+}
 
+AppLayer *App::PopLayer()
+{
+  AppLayer *back = m_Layers.back();
+
+  m_Layers.pop_back();
+
+  return back;
+}
+
+App &AppLayer::GetApp()
+{
+  return *g_Application;
+}
+
+} // namespace tt

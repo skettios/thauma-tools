@@ -1,28 +1,28 @@
 #include <iostream>
 
 #include <Numina.h>
+#include <Numina/Main.h>
 
-namespace tt
-{
-class Thaumaturge : public App
+#include <imgui.h>
+
+class TestLayer : public tt::AppLayer
 {
 public:
-  void OnUpdate() override
+  void OnImGui() override
   {
-  }
-
-  void OnRender() override
-  {
+    ImGui::Begin("Test");
+    ImGui::End();
   }
 };
-} // namespace tt
 
 int main(int argc, char **argv)
 {
   std::cout << "Thaumaturge" << std::endl;
-  tt::App *app = new tt::Thaumaturge();
+  tt::App *app = new tt::App();
   app->InsertResource(new tt::WindowDescriptor{"Thaumaturge"});
-  app->InsertResource(new tt::ClearColor{0.f, 1.f, 1.f});
+
+  app->PushLayer(new tt::DebugLayer);
+  app->PushLayer(new TestLayer);
 
   return 0;
 }

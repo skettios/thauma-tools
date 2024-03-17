@@ -7,6 +7,7 @@ target_sources(
   PRIVATE
     src/Numina.cpp
     src/Numina_App.cpp
+    src/Numina_Layer.cpp
 )
 target_include_directories(
   Numina
@@ -18,6 +19,11 @@ target_link_libraries(
   PRIVATE
     glfw
     glad
+)
+target_link_libraries(
+  Numina
+  PUBLIC
+    imgui
 )
 target_compile_definitions(
   Numina
