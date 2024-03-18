@@ -5,12 +5,20 @@
 
 #include <cstdint>
 
+union SDL_Event;
+
 namespace tt
 {
 class NUMINA_API AppLayer
 {
 public:
   virtual ~AppLayer();
+
+  virtual void OnPush();
+  virtual void OnPop();
+
+  virtual bool OnSDLEvent(SDL_Event *);
+
   virtual void OnUpdate(float);
   virtual void OnRender();
   virtual void OnImGui();

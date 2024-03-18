@@ -1,10 +1,12 @@
 #include "Numina/App.h"
 
+#include <SDL_events.h>
+
 #include <cassert>
 
 namespace tt
 {
-App *g_Application = nullptr;
+static App *g_Application = nullptr;
 
 App NUMINA_API *Numina_GetApplication()
 {
@@ -24,6 +26,15 @@ App::App()
 App::~App()
 {
   g_Application = nullptr;
+}
+
+void App::ProcessSDLEvents(SDL_Event *event)
+{
+  for (auto it = m_Layers.rbegin(); it != m_Layers.rend(); it++)
+  {
+    if (!(*it)->OnSDLEvent(event))
+      break;
+  }
 }
 
 void App::Update(float delta_time)
@@ -59,6 +70,7 @@ void App::InsertResource(AppResource *resource)
 void App::PushLayer(AppLayer *layer)
 {
   m_Layers.push_back(layer);
+  layer->OnPush();
 }
 
 AppLayer *App::PopLayer()
@@ -66,6 +78,7 @@ AppLayer *App::PopLayer()
   AppLayer *back = m_Layers.back();
 
   m_Layers.pop_back();
+  back->OnPop();
 
   return back;
 }

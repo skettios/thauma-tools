@@ -4,10 +4,7 @@
 #include "Numina/Defines.h"
 
 #include "Numina/App.h"
-
-namespace tt
-{
-void NUMINA_API Test();
-}
+#include "Numina/AppResources.h"
+#include "Numina/AppLayer.h"
 
 #endif // NUMINA_H

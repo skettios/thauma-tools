@@ -16,6 +16,7 @@ public:
   App();
   ~App();
 
+  void ProcessSDLEvents(SDL_Event *);
   void Update(float);
   void ImGuiUpdate();
   void Render();

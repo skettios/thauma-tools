@@ -83,8 +83,10 @@ void NUMINA_API Numina_Run(App *app)
       case SDL_QUIT:
         g_Running = false;
         break;
-      default:
+      default: {
+        app->ProcessSDLEvents(&event);
         break;
+      }
       }
     }
 

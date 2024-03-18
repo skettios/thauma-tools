@@ -8,6 +8,19 @@ AppLayer::~AppLayer()
 {
 }
 
+void AppLayer::OnPush()
+{
+}
+
+void AppLayer::OnPop()
+{
+}
+
+bool AppLayer::OnSDLEvent(SDL_Event *event)
+{
+  return true;
+}
+
 void AppLayer::OnUpdate(float)
 {
 }
@@ -20,9 +33,9 @@ void AppLayer::OnRender()
 {
 }
 
-float accumulator = 1.f;
 void DebugLayer::OnUpdate(float delta_time)
 {
+  static float accumulator = 1.f;
   accumulator += delta_time;
 
   if (accumulator >= 0.5f)
