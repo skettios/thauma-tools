@@ -7,6 +7,7 @@
 
 #include <unordered_map>
 #include <typeindex>
+#include <vector>
 
 namespace tt
 {

@@ -20,6 +20,11 @@ target_sources(
     ${imgui_SOURCE_DIR}/backends/imgui_impl_sdl2.cpp
     ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
 )
+set_target_properties(
+  imgui
+  PROPERTIES
+    POSITION_INDEPENDENT_CODE ON
+)
 target_include_directories(
   imgui
   PUBLIC
