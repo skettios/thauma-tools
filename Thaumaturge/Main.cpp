@@ -4,6 +4,7 @@
 #include <Numina/Main.h>
 
 #include <imgui.h>
+#include <glad/gl.h>
 
 class TestLayer : public tt::AppLayer
 {
@@ -11,6 +12,7 @@ public:
   void OnImGui() override
   {
     ImGui::Begin("Test");
+    ImGui::Text("Hello, World!");
     ImGui::End();
   }
 };

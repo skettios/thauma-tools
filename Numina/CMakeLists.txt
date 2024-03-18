@@ -16,13 +16,9 @@ target_include_directories(
 )
 target_link_libraries(
   Numina
-  PRIVATE
-    glfw
-    glad
-)
-target_link_libraries(
-  Numina
   PUBLIC
+    SDL2
+    glad
     imgui
 )
 target_compile_definitions(
@@ -48,6 +44,7 @@ target_link_libraries(
   Numain
   PRIVATE
     Numina
+    SDL2main
 )
 target_compile_definitions(
   Numain

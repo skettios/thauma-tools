@@ -33,6 +33,10 @@ struct ClearColor : AppResource
   }
 };
 
+struct ExposeOpenGL : AppResource
+{
+};
+
 } // namespace tt
 
 #endif // NUMINA_APPRESOURCES_H

@@ -15,9 +15,4 @@
 #endif
 #endif
 
-namespace tt
-{
-
-}
-
 #endif // NUMINA_DEFINES_H

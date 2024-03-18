@@ -6,12 +6,12 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
 
 include(FetchContent)
 FetchContent_Declare(
-  glfw
-  GIT_REPOSITORY "https://github.com/glfw/glfw.git"
-  GIT_TAG "3.4"
+  SDL2
+  GIT_REPOSITORY "https://github.com/libsdl-org/SDL.git"
+  GIT_TAG "release-2.30.1"
 )
-FetchCOntent_MakeAvailable(
-  glfw
+FetchContent_MakeAvailable(
+  SDL2
 )
 
 add_subdirectory(external/glad)

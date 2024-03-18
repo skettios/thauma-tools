@@ -28,6 +28,11 @@ public:
     return static_cast<T &>(*m_Resources.at(std::type_index(typeid(T))));
   }
 
+  template <typename T> bool HasResource() const
+  {
+    return m_Resources.find(std::type_index(typeid(T))) != m_Resources.end();
+  }
+
   AppLayer *PopLayer();
 
 private:

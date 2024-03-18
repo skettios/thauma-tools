@@ -17,7 +17,7 @@ target_sources(
     ${imgui_SOURCE_DIR}/imgui_draw.cpp
     ${imgui_SOURCE_DIR}/imgui_tables.cpp
     ${imgui_SOURCE_DIR}/imgui_widgets.cpp
-    ${imgui_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
+    ${imgui_SOURCE_DIR}/backends/imgui_impl_sdl2.cpp
     ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
 )
 target_include_directories(
@@ -29,6 +29,6 @@ target_include_directories(
 target_include_directories(
   imgui
   PRIVATE
-    $<TARGET_PROPERTY:glfw,INTERFACE_INCLUDE_DIRECTORIES>
+  $<TARGET_PROPERTY:SDL2,INTERFACE_INCLUDE_DIRECTORIES>
 )
 
