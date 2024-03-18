@@ -29,6 +29,6 @@ target_include_directories(
 target_include_directories(
   imgui
   PRIVATE
-  $<TARGET_PROPERTY:SDL2,INTERFACE_INCLUDE_DIRECTORIES>
+    $<TARGET_PROPERTY:SDL2,INTERFACE_INCLUDE_DIRECTORIES>
 )
 

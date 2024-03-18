@@ -28,6 +28,12 @@ App::~App()
   g_Application = nullptr;
 }
 
+void App::Build()
+{
+  for (auto layer : m_Layers)
+    layer->OnBuild();
+}
+
 void App::ProcessSDLEvents(SDL_Event *event)
 {
   for (auto it = m_Layers.rbegin(); it != m_Layers.rend(); it++)

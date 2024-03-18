@@ -69,6 +69,8 @@ int NUMINA_API Numina_Initialize(App *app)
 
 void NUMINA_API Numina_Run(App *app)
 {
+  app->Build();
+
   double last_time = SDL_GetPerformanceCounter();
   double delta_time = 0, now_time = 0;
 
@@ -120,5 +122,10 @@ void NUMINA_API Numina_Quit(App *app)
   SDL_DestroyWindow(g_Window);
 
   SDL_Quit();
+}
+
+void App::Exit()
+{
+  g_Running = false;
 }
 } // namespace tt

@@ -17,6 +17,8 @@ public:
   virtual void OnPush();
   virtual void OnPop();
 
+  virtual void OnBuild();
+
   virtual bool OnSDLEvent(SDL_Event *);
 
   virtual void OnUpdate(float);

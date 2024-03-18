@@ -16,6 +16,8 @@ public:
   App();
   ~App();
 
+  void Build();
+
   void ProcessSDLEvents(SDL_Event *);
   void Update(float);
   void ImGuiUpdate();
@@ -35,6 +37,8 @@ public:
   }
 
   AppLayer *PopLayer();
+
+  void Exit();
 
 private:
   std::unordered_map<std::type_index, AppResource *> m_Resources;

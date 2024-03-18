@@ -16,6 +16,10 @@ void AppLayer::OnPop()
 {
 }
 
+void AppLayer::OnBuild()
+{
+}
+
 bool AppLayer::OnSDLEvent(SDL_Event *event)
 {
   return true;
