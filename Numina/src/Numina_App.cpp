@@ -1,7 +1,6 @@
-#include "Numina.h"
+#include "Numina/App.h"
 
-#include <iostream>
-#include <assert.h>
+#include <cassert>
 
 namespace tt
 {

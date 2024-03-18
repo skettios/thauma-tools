@@ -1,5 +1,8 @@
 #include <SDL_main.h>
+#include <SDL_video.h>
+
 #include <glad/gl.h>
+
 #include <imgui.h>
 
 #include <cassert>
@@ -16,8 +19,6 @@ extern void Numina_Quit(class App *);
 
 extern ImGuiContext *Numina_GetImGuiContext();
 extern App *Numina_GetApplication();
-
-extern GLADapiproc Numina_GL_GetProcAddress(const char *);
 } // namespace tt
 
 int main(int argc, char **argv)
@@ -35,7 +36,7 @@ int main(int argc, char **argv)
   if (engine_result != 0)
     return engine_result;
 
-  gladLoadGL((GLADloadfunc)tt::Numina_GL_GetProcAddress);
+  gladLoadGL((GLADloadfunc)SDL_GL_GetProcAddress);
 
   ImGui::SetCurrentContext(tt::Numina_GetImGuiContext());
 

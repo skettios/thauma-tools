@@ -1,8 +1,8 @@
 #include "Numina/Defines.h"
 #include "Numina/App.h"
 
-#include <glad/gl.h>
 #include <SDL.h>
+#include <glad/gl.h>
 
 #include <imgui.h>
 #include <imgui_impl_sdl2.h>
@@ -19,11 +19,6 @@ static bool g_Running = true;
 ImGuiContext NUMINA_API *Numina_GetImGuiContext()
 {
   return g_ImGuiContext;
-}
-
-GLADapiproc NUMINA_API Numina_GL_GetProcAddress(const char *name)
-{
-  return (GLADapiproc)SDL_GL_GetProcAddress(name);
 }
 
 int NUMINA_API Numina_Initialize(App *app)
